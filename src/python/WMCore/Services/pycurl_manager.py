@@ -55,6 +55,9 @@ except ImportError:
     # PY3
     from urllib.parse import urlencode
 
+from six import PY3
+if PY3:
+    basestring = str
 
 class ResponseHeader(object):
     """ResponseHeader parses HTTP response header"""
