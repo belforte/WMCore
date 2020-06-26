@@ -55,6 +55,7 @@ import os
 import time
 from io import StringIO    # for handling unicode strings
 from http.client import HTTPException
+from io import BytesIO
 
 from WMCore.Services.Requests import Requests, JSONRequests
 from WMCore.WMException import WMException
@@ -177,7 +178,7 @@ class Service(dict):
         """
         # if not caching to disk return StringIO object
         if not self['cachepath'] or not cachefile:
-            return StringIO()
+            return BytesIO()
 
         inputdata = inputdata or {}
         if inputdata:

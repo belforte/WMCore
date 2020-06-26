@@ -12,6 +12,7 @@ from __future__ import division, print_function
 
 import base64
 from io import StringIO    # for handling unicode strings
+
 import logging
 import os
 import shutil
@@ -32,7 +33,9 @@ try:
 except ImportError:
     # PY3
     from urllib.parse import urlparse
+
 from http.client import HTTPException
+from io import BytesIO
 from json import JSONEncoder, JSONDecoder
 
 from Utils.CertTools import getKeyCertFromEnv, getCAPathFromEnv
@@ -475,8 +478,8 @@ class Requests(dict):
         fullParams = [(fieldName, (c.FORM_FILE, fileName))]
         fullParams.extend(params)
         c.setopt(c.HTTPPOST, fullParams)
-        bbuf = StringIO.StringIO()
-        hbuf = StringIO.StringIO()
+        bbuf = BytesIO()
+        hbuf = BytesIO()
         c.setopt(pycurl.WRITEFUNCTION, bbuf.write)
         c.setopt(pycurl.HEADERFUNCTION, hbuf.write)
         if capath:
@@ -513,7 +516,7 @@ class Requests(dict):
         capath = self.getCAPath()
         import pycurl
 
-        hbuf = StringIO.StringIO()
+        hbuf = BytesIO()
 
         with open(fileName, "wb") as fp:
             curl = pycurl.Curl()
