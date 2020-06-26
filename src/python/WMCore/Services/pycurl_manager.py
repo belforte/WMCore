@@ -38,8 +38,8 @@ for row in data:
 """
 from __future__ import print_function
 
-import cStringIO as StringIO
-import httplib
+from io import StringIO    # for handling unicode strings
+from http.client import HTTPException
 import json
 import logging
 import os
@@ -267,7 +267,7 @@ class RequestHandler(object):
             data = bbuf.getvalue()
             msg = 'url=%s, code=%s, reason=%s, headers=%s' \
                   % (url, header.status, header.reason, header.header)
-            exc = httplib.HTTPException(msg)
+            exc = HTTPException(msg)
             setattr(exc, 'req_data', params)
             setattr(exc, 'req_headers', headers)
             setattr(exc, 'url', url)

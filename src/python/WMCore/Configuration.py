@@ -13,9 +13,12 @@ import imp
 import os
 import sys
 import traceback
+import six
 
 # PY3 compatibility
-if sys.version_info == 3:  # PY3 Remove when python 3 transition complete
+
+#if sys.version_info == 3:  # PY3 Remove when python 3 transition complete
+if six.PY3:
     basestring = str
     unicode = str
     long = int

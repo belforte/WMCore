@@ -6,17 +6,19 @@ General Exception class for WM modules
 
 """
 
-import exceptions
 import inspect
 import logging
 import sys
 import traceback
+import six
+if six.PY2:
+    from exceptions import Exception
 
 WMEXCEPTION_START_STR = "<@========== WMException Start ==========@>"
 WMEXCEPTION_END_STR = "<@---------- WMException End ----------@>"
 
 
-class WMException(exceptions.Exception):
+class WMException(Exception):
     """
     _WMException_
 

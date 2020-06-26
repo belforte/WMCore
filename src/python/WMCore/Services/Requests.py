@@ -11,7 +11,7 @@ The response from the remote server is cached if expires/etags are set.
 from __future__ import division, print_function
 
 import base64
-import cStringIO as StringIO
+from io import StringIO    # for handling unicode strings
 import logging
 import os
 import shutil
@@ -32,7 +32,7 @@ try:
 except ImportError:
     # PY3
     from urllib.parse import urlparse
-from httplib import HTTPException
+from http.client import HTTPException
 from json import JSONEncoder, JSONDecoder
 
 from Utils.CertTools import getKeyCertFromEnv, getCAPathFromEnv

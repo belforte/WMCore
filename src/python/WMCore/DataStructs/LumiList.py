@@ -17,7 +17,7 @@ import copy
 import itertools
 import json
 import re
-import urllib2
+from six.moves.urllib.request import urlopen
 from contextlib import closing
 
 class LumiList(object):
@@ -61,7 +61,7 @@ class LumiList(object):
                 self.compactList = json.load(jsonFile)
         elif url:
             self.url = url
-            with closing(urllib2.urlopen(url)) as jsonFile:
+            with closing(urlopen(url)) as jsonFile:
                 self.compactList = json.load(jsonFile)
         elif lumis:
             runsAndLumis = {}
