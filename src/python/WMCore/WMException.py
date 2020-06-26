@@ -10,8 +10,8 @@ import inspect
 import logging
 import sys
 import traceback
-import six
-if six.PY2:
+from six import PY2
+if PY2:
     from exceptions import Exception
 
 WMEXCEPTION_START_STR = "<@========== WMException Start ==========@>"
