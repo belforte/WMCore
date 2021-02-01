@@ -148,7 +148,7 @@ dependencies = {
     },
     'crabtaskworker': {
         'packages': ['WMCore.Credential', 'WMCore.Algorithms+', 'WMCore.WMSpec+',
-                     'WMCore.JobSplitting', 'WMCore.Services+', 'Utils+'],
+                     'WMCore.JobSplitting', 'WMCore.WMBS', 'WMCore.Services+', 'Utils+'],
         'systems': ['wmc-database', 'wmc-runtime'],
     },
     'wmclient': {
